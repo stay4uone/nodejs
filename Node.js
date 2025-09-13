@@ -1,7 +1,13 @@
-var router = express.Router();
+const express = require('express');
+const app = express();
+const PORT = 80;
+
 var os = require('os');
 
-router.get('/', function(req, res, next) {
-  res.json(os.networkInterfaces());
+app.get('/', (req, res) => {
+  res.send(os.networkInterfaces());
 });
-module.exports = router;
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
